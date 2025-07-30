@@ -8,12 +8,8 @@ lerna-debug.log*
 
 # Next.js
 .next/
+.next/cache/
 out/
-build/
-dist/
-
-# Production
-/build
 
 # Runtime data
 pids
@@ -43,8 +39,9 @@ build/Release
 # Dependency directories
 jspm_packages/
 
-# TypeScript cache
+# TypeScript
 *.tsbuildinfo
+next-env.d.ts
 
 # Optional npm cache directory
 .npm
@@ -81,19 +78,7 @@ jspm_packages/
 .cache
 .parcel-cache
 
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
-# Gatsby files
-.cache/
-public
-
 # Storybook build outputs
-.out
 .storybook-out
 storybook-static
 
@@ -138,10 +123,6 @@ Desktop.ini
 
 # Vite
 .vite
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
 
 # PWA files
 **/public/sw.js
