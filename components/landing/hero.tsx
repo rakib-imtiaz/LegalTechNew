@@ -6,6 +6,7 @@ import { motion } from "motion/react"
 import { Button } from "@/components/ui/button"
 import { FlipWords } from "@/components/ui/flip-words"
 import { AuroraBackground } from "@/components/ui/aurora-background"
+import Threads from "@/components/ui/threads"
 
 export function LandingHero() {
   const words = ["Agreements", "Incorporations", "Contracts", "Patents", "Trademarks"];
@@ -21,8 +22,20 @@ export function LandingHero() {
         loop
         playsInline
       />
+      
+      {/* Threads animation layer */}
+      <div className="absolute inset-0 w-full h-full -z-5">
+        <Threads
+          color={[0.2, 0.8, 1]} // Cyan color to match the theme
+          amplitude={2.4}
+          distance={0.3}
+          enableMouseInteraction={true}
+          className="opacity-60"
+        />
+      </div>
+      
       {/* Hero content */}
-      <div className="relative z-10 container text-center pt-20 md:pt-32">
+      <div className="relative z-10 container text-center pt-20 md:pt-32 pointer-events-auto">
         <motion.div 
           className="max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
