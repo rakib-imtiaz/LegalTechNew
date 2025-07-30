@@ -39,14 +39,51 @@ export function LandingHero() {
         </motion.div>
         
         <motion.div 
-          className="mt-10"
+          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <Button size="lg" asChild className="rounded-full bg-white text-gray-900 hover:bg-gray-200 shadow-lg font-semibold">
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+          {/* Primary CTA - Try Dashboard */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative"
+          >
+            <Button 
+              size="lg" 
+              asChild 
+              className="rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white hover:from-teal-600 hover:to-blue-700 shadow-xl font-semibold px-8 py-3 border-0 transition-all duration-200"
+            >
+              <Link href="/dashboard" className="flex items-center space-x-2">
+                <span>Try Dashboard</span>
+                <motion.div
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="text-lg"
+                >
+                  →
+                </motion.div>
+              </Link>
+            </Button>
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 blur-lg opacity-30 -z-10"></div>
+          </motion.div>
+
+          {/* Secondary CTA - Contact Us */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Button 
+              size="lg" 
+              asChild 
+              variant="outline"
+              className="rounded-full bg-transparent border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 shadow-lg font-semibold px-8 py-3 backdrop-blur-sm transition-all duration-200"
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
     </AuroraBackground>
