@@ -1,12 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config: Config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -73,33 +74,12 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-      },
-      backgroundImage: {
-        'glass-gradient': 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
-      },
-      boxShadow: {
-        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
-      },
-      backdropFilter: {
-        'blur': 'blur(5px)',
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        heading: ["var(--font-heading)", ...fontFamily.sans],
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    function ({ addUtilities }: { addUtilities: any }) {
-      addUtilities({
-        '.glass': {
-          'background-image': 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
-          'box-shadow': '0 4px 30px rgba(0, 0, 0, 0.1)',
-          'backdrop-filter': 'blur(5px)',
-          '-webkit-backdrop-filter': 'blur(5px)',
-          'border': '1px solid rgba(255, 255, 255, 0.1)',
-        },
-      })
-    }
-  ],
-} satisfies Config
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
 
-export default config
+export default config;

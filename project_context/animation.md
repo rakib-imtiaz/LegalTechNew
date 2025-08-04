@@ -1,127 +1,311 @@
-NomosAI Animation Guide: Integrating Modern UI Libraries
-This guide outlines a comprehensive strategy for implementing a premium, modern, and highly engaging user interface for NomosAI. By strategically leveraging the strengths of Aceternity UI, React Bits, and Motion Primitives—all powered by Framer Motion and Tailwind CSS—we will create a visually stunning and intuitively interactive experience that aligns perfectly with NomosAI's brand and functional requirements.
+Learningly AI – Consolidated Project Documentation
 
-1. Core Animation Principles for NomosAI
-To maintain a consistent and high-quality user experience, all animations across NomosAI will adhere to these principles:
+This document collates three key artifacts for Learningly AI in the same formats as the provided templates:
 
-Purposeful Motion: Every animation must serve a clear UX goal: providing feedback, guiding user attention, indicating state changes, or simply delighting the user. Avoid gratuitous or distracting animations.
+Animation Guide (based on animation.md)
 
-Subtle Elegance: Animations should feel sophisticated and seamless, enhancing the professional tone of a legal tech platform rather than overwhelming it.
+Software Requirements Specification (SRS) (based on project_context.md)
 
-Performance First: Prioritize smooth, 60fps animations. Utilize techniques like useReducedMotion and will-change CSS properties where appropriate.
+UI Documentation (based on UI_context.md)
 
-Brand Alignment: Adhere strictly to the NomosAI color palette: Teal (#1ABC9C), Navy Blue (#0D1B2A), Gold (#F1C40F), White (#FFFFFF), and Gray (#BDC3C7).
+1. Learningly AI Animation Guide: Integrating React Bits & Framer Motion
 
-Responsiveness: Animations must adapt gracefully across all breakpoints (Desktop, Tablet, Mobile), ensuring a consistent experience on any device.
+Purpose: Define a consistent, high-performance, and brand-aligned animation strategy for Learningly AI, using React Bits components and Framer Motion primitives.
 
-Accessibility: Ensure animations do not hinder accessibility. Provide alternatives for users who prefer reduced motion and use aria-live regions for dynamic content updates.
+1.1 Core Animation Principles
 
-2. Section-by-Section Animation Recommendations
-This section details specific animation strategies for key areas of the NomosAI platform, integrating components and patterns from the identified libraries.
+Purposeful Motion: Every effect must clarify state changes (e.g., upload progress, generation in-flight) or delight users (e.g., study streak confetti).
 
-2.1 Hero Section (Landing Page)
-Goal: Immediately captivate visitors and convey NomosAI's power in transforming legal complexity into clarity with a futuristic, professional aesthetic.
+Subtle Elegance: Keep animations under 300 ms, avoid jarring transitions.
 
-Animation Concept: "Synthesizing Legal Insight"
+Performance First: Aim for 60 fps; respect useReducedMotion.
 
-The scene opens in a sleek, expansive digital chamber, defined by subtle architectural lines and a predominant Navy Blue (#0D1B2A) gradient that deepens into shadow. Through this sophisticated space, streams of unorganized, shimmering Teal (#1ABC9C) light particles and fragmented data lines drift aimlessly, suggesting the overwhelming complexity of raw legal information. From the center of this environment, a highly polished, multifaceted 3D structure emerges, its surfaces reflecting light with a subtle, metallic sheen. This elegant object, embodying advanced technology and precision, begins to emit a focused, warm Gold (#F1C40F) glow.
+Brand Alignment: Use primary (#667eea), secondary (#764ba2), accent (#ff6b6b), neutrals (#f5f5f5, #333) palette.
 
-As this central structure activates, the scattered Teal data streams are smoothly drawn inward, merging with its form. Inside, intricate White (#FFFFFF) circuit patterns illuminate and fluid networks of Teal (#1ABC9C) and Gold (#F1C40F) light pulse, visualizing the AI's deep processing. The structure then dynamically reconfigures, pushing outwards transformed, highly refined 3D visualizations: a perfectly balanced, minimalistic Gold (#F1C40F) scale, a transparent, multi-layered 3D document with key legal sections highlighted by vibrant Teal (#1ABC9C) accents, and a clean, interconnected White (#FFFFFF) data lattice, signifying comprehensive research and insightful connections. The chamber's background subtly brightens to a sophisticated White (#FFFFFF) or a light Gray (#BDC3C7), underscoring the achieved clarity and modern professionalism. The animation concludes with these precise, organized 3D elements elegantly floating in a calm, controlled space, radiating confidence and intelligent order.
+Responsiveness: Ensure smooth behavior across Desktop, Tablet, Mobile breakpoints.
 
-Component Integration:
+Accessibility: Provide toggles for reduced motion; use aria-live for dynamic content updates.
 
-Aceternity UI:
+1.2 Section-by-Section Recommendations
 
-Background Beams / Spotlight: Adapt these effects for the initial digital chamber ambiance and the subtle light streaks.
+1.2.1 Hero Section (Landing & Dashboard)
 
-Container Scroll Animation: If the hero section is designed to progress as the user scrolls, this component is ideal for orchestrating the animation stages based on scroll depth.
+Goal: Convey instant personalization and AI power.
 
-Text Reveal / Typewriter Effect: For the main headline and sub-headline that appear after the primary animation sequence concludes, providing a powerful textual punch.
+Background: Aurora with colorStops = ["#667eea","#764ba2"].
 
-Motion Primitives:
+Headline: Wrap in <FadeContent blur> then <Bounce> to reveal main tagline.
 
-Fade / Scale: For the appearance and transformation of the central 3D structure and the final refined elements.
+Subcopy & CTA: Use <AnimatedContent direction="vertical">, then <ClickSpark> + <StarBorder> for “Start Learning Now”.
 
-Marquee / Path Animation: To depict the flowing data streams being drawn into the core.
+<Aurora colorStops={["#667eea","#764ba2"]} />
+<FadeContent blur>
+  <Bounce><h1>Learn Smarter with AI</h1></Bounce>
+  <AnimatedContent direction="vertical">
+    <p>Auto-generate quizzes, summaries, flashcards in seconds.</p>
+    <ClickSpark sparkColor="#ff6b6b" sparkCount={20}>
+      <StarBorder>
+        <button>Start Learning Now</button>
+      </StarBorder>
+    </ClickSpark>
+  </AnimatedContent>
+</FadeContent>
 
-React Bits:
+1.2.2 Feature Cards Section
 
-Glow Effect: Apply subtle, interactive glows to the final 3D constructs if they are designed to be clickable or interactive.
+Goal: Showcase core features as users scroll.
 
-2.2 Feature Sections (Case Glancer, Document Drafter, Legal Research Assistant, etc.)
-Goal: Visually explain each feature's benefit and workflow, making complex tools easily digestible.
+Container: Use AnimatedContent with direction="horizontal" distance={100}.
 
-Component Integration:
+Card Title: Wrap in <Bounce>.
 
-Aceternity UI:
+Icon Hover: <Pulse> on feature icon when in view.
 
-Bento Grids: Ideal for showcasing multiple features in a visually appealing, responsive grid layout. Each grid item (feature card) can have subtle hover effects.
+<AnimatedContent direction="horizontal" distance={100}>
+  <Bounce><h2>Smart Summaries</h2></Bounce>
+  <Pulse><img src="/icons/summary.svg" alt="" /></Pulse>
+</AnimatedContent>
 
-Card Spotlight / Glare Card: Apply to individual feature cards within the Bento Grid or as standalone feature blocks to draw attention and add a premium feel on hover.
+1.2.3 Study Flow Demo
 
-Text Reveal / Typewriter Effect: For concise feature descriptions that animate in as the user scrolls to each section.
+Goal: Demonstrate Quiz & Flashcard interactions live.
 
-React Bits:
+Quiz Button: <ClickSpark> on “Try Quiz” button.
 
-Animated Icons: Use small, custom-animated SVG icons for each feature (e.g., a magnifying glass for Legal Research Assistant, a pen for Document Drafter) that subtly animate on hover or when the section is in view.
+Flashcard Flip: <FlipCard> for term-definition.
 
-Pulse / Glow: Apply to key interactive elements within feature cards (e.g., "Upload File" button) to guide user interaction.
+<ClickSpark sparkColor="#667eea">
+  <button>Try Quiz</button>
+</ClickSpark>
+<FlipCard front="What is AI?" back="Artificial Intelligence..." />
 
-Motion Primitives:
+1.2.4 Progress Feedback
 
-Slide-in / Fade-in: For feature cards or sections as they enter the viewport, creating a smooth, engaging reveal effect on scroll.
+Goal: Celebrate user milestones.
 
-Number Ticker: For displaying key statistics or metrics related to a feature (e.g., "99% Accuracy," "5-second summaries").
+Confetti: Custom <Confetti> component triggered on streak milestones.
 
-2.3 Client Intake & AI Chat Interface
-Goal: Make the AI interaction feel responsive, intelligent, and seamless, building trust and engagement.
+Toast: <ToastContainer> with sliding in messages “You hit a 7-day streak!”.
 
-Component Integration:
+1.3 Implementation Notes
 
-React Bits:
+Framer Motion: Core for custom keyframe sequences.
 
-Typing Indicator: Essential for AI responses in the chat interface, providing a natural conversational feel.
+React Bits: Use primitives (FadeContent, Bounce, AnimatedContent, ClickSpark, FlipCard).
 
-Message Bubble Animations: Subtle fade-in or bounce effects for chat messages as they appear, enhancing the dynamic nature of the conversation.
+Tailwind CSS: Utility classes for responsive breakpoints, theme tokens.
 
-Motion Primitives:
+Performance: shouldReduceMotion hook to disable non-essential animations.
 
-Fade / Slide: For the appearance of new chat messages or the transcription box.
+2. Software Requirements Specification (SRS)
 
-Progressive Blur: Apply a subtle blur effect to the transcription box background during active voice processing, indicating a temporary state of focus.
+Project Title: Learningly AI – AI-Powered Learning PlatformDate: Aug 2025Version: 1.0Prepared by: Learningly AI Product Team
 
-Aceternity UI:
+2.1 Introduction
 
-Canvas Reveal Effect: Could be adapted for the dynamic reveal of the AI-generated summary or transcription box, adding a "magical" touch.
+2.1.1 Purpose: Define functional and non-functional requirements for Learningly AI, which transforms learning content into interactive study aids.
 
-2.4 General UI Elements (Buttons, Modals, Side Panel)
-Goal: Ensure consistent, polished, and intuitive interactions across the entire platform, adhering to existing UI specifications.
+2.1.2 Scope: Covers document ingestion, AI generation (summaries, quizzes, flashcards), chat assistant, study tools, analytics, and platform integrations.
 
-Component Integration:
+2.1.3 Definitions:
 
-Motion Primitives:
+AI: Artificial Intelligence
 
-Fade / Slide / Collapse: Implement these for the side panel's collapse/expand animation (adhering to the 300ms ease-in-out transition from UI_context.md), modal windows appearing/disappearing, and dropdown menus.
+SRS: Software Requirements Specification
 
-React Bits:
+FR: Functional Requirement
 
-Button Hover Effects: Apply the specified color change with a smooth 200ms transition to all primary and secondary buttons.
+UI: User Interface
 
-Text Field Focus: Implement the soft border glow on focus for input fields, lasting 150ms.
+UX: User Experience
 
-Aceternity UI:
+2.2 Overall Description
 
-While Motion Primitives and React Bits cover basic button and input animations, Aceternity UI can inspire more elaborate, subtle effects like a "Border Trail" or a "Glow Effect" (often built with Framer Motion) for primary action buttons, adding a premium feel without being distracting.
+2.2.1 Product Perspective: Web-based platform (Next.js + Node.js), integrating OpenAI, Google Gemini, Novita.ai.
 
-3. Implementation Notes
-Framer Motion: This will be the foundational animation library for most complex effects, providing declarative syntax and robust performance.
+2.2.2 User Classes:
 
-Tailwind CSS: Utilize Tailwind's utility-first approach for styling all components and controlling animation properties.
+Students (HS–Uni)
 
-Composability: Encourage combining "primitives" from Motion Primitives with "bits" from React Bits and integrating them within Aceternity UI components for unique, tailored animations.
+Self-learners
 
-Performance Optimization: Always test animations across various devices and browsers. Use requestAnimationFrame for custom animations where necessary and optimize SVG assets.
+Educators
 
-Accessibility: Ensure all interactive elements have appropriate aria attributes. Provide a global "Reduce Motion" toggle if complex animations are extensive.
+Institutions / Corporate L&D
 
-By carefully selecting and integrating these powerful UI libraries, NomosAI will deliver a truly professional, modern, and engaging user experience that stands out in the legal tech landscape.
+2.2.3 Assumptions & Dependencies:
+
+Internet required
+
+Third-party AI APIs availability
+
+Supabase for storage, Redis for caching
+
+2.3 System Features
+
+2.3.1 Document Processing & Upload
+
+FR-1: Support PDF, DOCX, PPTX, TXT (≤50 MB). Extraction latency ≤20 s.
+
+FR-2: YouTube transcript import with captions or ASR fallback.
+
+2.3.2 Smart Summaries
+
+FR-3: Styles: Outline, ELI6, Key Points. Diagram block via Mermaid. Export PDF.
+
+2.3.3 Interactive Quizzes
+
+FR-4: 10–50 Q; difficulty bands; MCQ/TF/Short Answer. Adaptive filter.
+
+FR-5: Score analytics & review.
+
+2.3.4 Smart Flashcards
+
+FR-6: Auto-generated cards; cloze support; SRS scheduling; retention curves.
+
+2.3.5 AI Chat Assistant
+
+FR-7: Context-aware chat over uploaded content; inline citations.
+
+2.3.6 Study Tools
+
+FR-8: Quick Notes (3-min recap).
+
+FR-9: Meme Generation (toggleable).
+
+FR-10: Personalized study plans & mock tests.
+
+2.4 External Interface Requirements
+
+UI: Responsive web dashboard, modals, chat interface.
+
+API: OpenAI, YouTube Transcript, ConvertAPI.
+
+Storage: Supabase, Redis.
+
+2.5 Non-Functional Requirements
+
+Performance: p95 gen latency ≤30 s.
+
+Availability: 99.9% uptime.
+
+Security: AES-256 encryption; GDPR/CCPA compliance.
+
+Accessibility: WCAG 2.1 AA.
+
+2.6 Future Enhancements
+
+Mobile apps (iOS/Android)
+
+Collaborative study sessions
+
+LMS connectors
+
+Multilingual UI
+
+2.7 Appendices
+
+A: Sample user flows
+
+B: Data retention policy
+
+3. UI Documentation for Learningly AI
+
+3.1 Overview
+
+Clean, intuitive two-column layout with collapsible sidebar and main content area. Built with Next.js, Tailwind CSS, Radix UI.
+
+3.2 Responsive Layout
+
+Desktop: Sidebar (250px) + Main content (auto).
+
+Tablet: Sidebar collapsible to icons (50px).
+
+Mobile: Top nav + hamburger menu.
+
+3.3 Global Components
+
+3.3.1 Side Panel
+
+Width: 250px (expanded), 50px (collapsed).
+
+Items: Dashboard, Upload, My Progress, Chat, Settings.
+
+Hover/bg: #764ba2 → lighten by 10%. Transition 300 ms ease.
+
+3.3.2 Header
+
+Height: 64px.
+
+Left: Logo (120×32).
+
+Center: Nav links spaced 24px.
+
+Right: Profile avatar (40px) → dropdown.
+
+3.3.3 Footer
+
+Height: 80px.
+
+Links: Terms, Privacy, Help.
+
+Bounce animation on brand tagline.
+
+3.4 Pages & Key Elements
+
+3.4.1 Dashboard
+
+Hero banner with Aurora + CTA.
+
+Stats cards (DAU, Sessions, Streaks) in grid (min-w: 280px).
+
+Recent items carousel (3 visible).
+
+3.4.2 Upload/Import Modals
+
+Drag-drop zone (dashed border, #667eea) 360×180.
+
+URL input (full width) + Fetch button (50×150).
+
+3.4.3 Generation Screen
+
+Toggles: Summary, Quiz, Flashcards, Notes (Radix Switch).
+
+Sliders: #Quiz Q, Difficulty (Track height: 4px).
+
+Generate CTA (disabled until at least one toggle).
+
+3.4.4 Results Grid
+
+Responsive grid, gap: 20px.
+
+Card: shadow-md, rounded-lg. Header: icon + title. Body: preview text. Footer: Open/Edit/Export.
+
+3.4.5 Study Flows
+
+Quiz: Full-screen modal, progress bar (height: 6px), Next/Skip icons.
+
+Flashcards: StackCarousel, FlipCard on click, SRS buttons below.
+
+Chat: Message list with Typewriter effect; input field (height: 48px).
+
+3.5 Theming & Tokens
+
+Colors: Primary: #667eea; Secondary: #764ba2; Accent: #ff6b6b; Neutral-100: #f5f5f5; Neutral-900: #111.
+
+Spacing: base unit = 8px; multipliers (x2, x4).
+
+Border Radius: md = 8px; lg = 16px.
+
+Typography: Headings: Inter 600; Body: Roboto 400.
+
+3.6 Interaction Patterns
+
+Transitions: 200 ms ease for hover/focus.
+
+Focus Rings: 2px solid accent.
+
+Modals: Centered, width: 400px, backdrop opacity: 50%.
+
+End of document.
+
