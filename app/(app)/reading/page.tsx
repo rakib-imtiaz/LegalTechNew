@@ -16,10 +16,20 @@ import { motion } from "framer-motion"
 import { FadeContent } from "@/components/react-bits/fade-content"
 import { Bounce } from "@/components/react-bits/bounce"
 
+interface ReadingResult {
+  summary: string;
+  notes: string[];
+  quiz: {
+    question: string;
+    options: string[];
+    answer: string;
+  }[];
+}
+
 const ReadingPage = () => {
   const [activeTab, setActiveTab] = React.useState("summary")
   const [isProcessing, setIsProcessing] = React.useState(false)
-  const [result, setResult] = React.useState(null)
+  const [result, setResult] = React.useState<ReadingResult | null>(null)
 
   const handleProcess = () => {
     setIsProcessing(true)

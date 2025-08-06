@@ -14,7 +14,17 @@ import { Textarea } from "@/components/ui/textarea"
 import { motion } from "framer-motion"
 import { Typewriter } from "@/components/react-bits/typewriter"
 
-const steps = [
+interface SolutionStep {
+  title: string;
+  explanation: string;
+}
+
+interface Solution {
+  finalAnswer: string;
+  steps: SolutionStep[];
+}
+
+const steps: SolutionStep[] = [
   {
     title: "Identify the variables",
     explanation: "The key variables are distance (d), rate (r), and time (t).",
@@ -31,7 +41,7 @@ const steps = [
 
 const SolverPage = () => {
   const [problem, setProblem] = React.useState("")
-  const [solution, setSolution] = React.useState(null)
+  const [solution, setSolution] = React.useState<Solution | null>(null)
   const [isProcessing, setIsProcessing] = React.useState(false)
 
   const handleSolve = () => {
@@ -88,21 +98,19 @@ const SolverPage = () => {
           </CardHeader>
           <CardContent>
             {solution ? (
-              <Typewriter>
-                <div className="space-y-4">
-                  {solution.steps.map((step, index) => (
-                    <div key={index}>
-                      <h3 className="font-semibold text-lg">{`${index + 1}. ${
-                        step.title
-                      }`}</h3>
-                      <p className="text-gray-600">{step.explanation}</p>
-                    </div>
-                  ))}
-                  <div className="pt-4 border-t border-gray-200">
-                    <h3 className="font-bold text-xl">{solution.finalAnswer}</h3>
+              <div className="space-y-4">
+                {solution.steps.map((step, index) => (
+                  <div key={index}>
+                    <h3 className="font-semibold text-lg">{`${index + 1}. ${
+                      step.title
+                    }`}</h3>
+                    <p className="text-gray-600">{step.explanation}</p>
                   </div>
+                ))}
+                <div className="pt-4 border-t border-gray-200">
+                  <h3 className="font-bold text-xl">{solution.finalAnswer}</h3>
                 </div>
-              </Typewriter>
+              </div>
             ) : (
               <div className="flex items-center justify-center h-48 border-2 border-dashed border-gray-300 rounded-lg">
                 <p className="text-gray-500">

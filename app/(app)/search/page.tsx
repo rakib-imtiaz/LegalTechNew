@@ -9,7 +9,13 @@ import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
 import { ClickSpark } from "@/components/react-bits/click-spark"
 
-const searchResults = [
+interface SearchResult {
+  title: string;
+  source: string;
+  snippet: string;
+}
+
+const searchResults: SearchResult[] = [
   {
     title: "The Impact of AI on Modern Education",
     source: "research-paper.pdf",
@@ -26,7 +32,7 @@ const searchResults = [
 
 const SearchPage = () => {
   const [query, setQuery] = React.useState("")
-  const [results, setResults] = React.useState([])
+  const [results, setResults] = React.useState<SearchResult[]>([])
   const [isProcessing, setIsProcessing] = React.useState(false)
 
   const handleSearch = () => {

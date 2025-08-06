@@ -50,7 +50,11 @@ const featureCards = [
   },
 ];
 
-export default function MainContent({ sidebarCollapsed }) {
+interface MainContentProps {
+  sidebarCollapsed: boolean;
+}
+
+export default function MainContent({ sidebarCollapsed }: MainContentProps) {
   return (
     <div className="bg-white">
       {/* Header */}

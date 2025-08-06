@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 const dates = Array.from({ length: 35 }, (_, i) => i - 4) // Dummy dates for a 5-week view
 
-const events = {
+const events: { [key: number]: { title: string; color: string }[] } = {
   10: [{ title: "Midterm Exam", color: "bg-red-500" }],
   15: [{ title: "Project Due", color: "bg-blue-500" }],
   22: [{ title: "Study Session", color: "bg-green-500" }],

@@ -5,13 +5,28 @@ import Link from "next/link"
 import { Menu, LogOut, Settings, BrainCircuit } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+interface NavigationItem {
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  active?: boolean;
+}
+
+interface AppSidebarProps {
+  sidebarCollapsed: boolean;
+  setSidebarCollapsed: (collapsed: boolean) => void;
+  navigationItems: NavigationItem[];
+  workspaceItems: NavigationItem[];
+  isMobile?: boolean;
+}
+
 export default function AppSidebar({
   sidebarCollapsed,
   setSidebarCollapsed,
   navigationItems,
   workspaceItems,
   isMobile = false,
-}) {
+}: AppSidebarProps) {
   const commonClasses = "flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200"
 
   return (
