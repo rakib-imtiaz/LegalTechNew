@@ -24,32 +24,32 @@ const features = [
     title: "Smart Summaries",
     description: "Condense lengthy documents into structured, easy-to-digest summaries.",
     details: ["Outline format", "ELI5 explanations", "Key points extraction", "Citation support"],
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
   {
     icon: HelpCircle,
     title: "Interactive Quizzes",
     description: "Generate adaptive quizzes that challenge you and reinforce learning.",
     details: ["10-50 questions", "Difficulty levels", "Multiple formats", "Smart adaptation"],
-    color: "text-purple-500",
-    bg: "bg-purple-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
   {
     icon: CreditCard,
     title: "AI Flashcards",
     description: "Create smart flashcards with spaced repetition to boost memory retention.",
     details: ["Auto-generation", "Cloze deletion", "SRS algorithm", "Progress tracking"],
-    color: "text-emerald-500",
-    bg: "bg-emerald-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
   {
     icon: MessageCircle,
     title: "AI Chat Assistant",
     description: "Get context-aware tutoring and instant answers from your materials.",
     details: ["Contextual answers", "Source citations", "Follow-up prompts", "24/7 availability"],
-    color: "text-red-500",
-    bg: "bg-red-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   }
 ];
 
@@ -62,7 +62,7 @@ const FeatureCard = ({
   bg,
   isBack = false
 }: (typeof features)[0] & { isBack?: boolean }) => (
-  <Card className={cn("flex h-full w-full flex-col justify-between rounded-2xl border-2 p-6 transition-all", isBack ? "border-primary/50 bg-primary/5" : "border-transparent bg-muted/50")}>
+  <Card className={cn("flex h-full w-full flex-col justify-between rounded-2xl border-2 p-6 transition-all", isBack ? "border-black/50 bg-black/5" : "border-transparent bg-black/5")}>
     <div>
       <div className={cn("mb-4 flex h-12 w-12 items-center justify-center rounded-lg", bg)}>
         <Icon className={cn("h-6 w-6", color)} />
@@ -75,13 +75,13 @@ const FeatureCard = ({
         <ul className="space-y-2">
           {details.map((detail) => (
             <li key={detail} className="flex items-center text-muted-foreground">
-              <Check className="mr-2 h-4 w-4 text-emerald-500" />
+              <Check className="mr-2 h-4 w-4 text-black" />
               <span>{detail}</span>
             </li>
           ))}
         </ul>
       ) : (
-        <div className="flex items-center text-sm font-medium text-primary">
+        <div className="flex items-center text-sm font-medium text-black">
           <span>Learn More</span>
           <ArrowRight className="ml-2 h-4 w-4" />
         </div>
@@ -96,14 +96,14 @@ export const FeaturesSection: React.FC = () => {
       <div className="container mx-auto px-4">
         
         <SlideIn direction="down" className="text-center">
-          <Badge variant="outline" className="mb-4 border-primary/30 bg-primary/10 py-2 px-4 text-sm font-medium text-primary">
+          <Badge variant="outline" className="mb-4 border-black/20 bg-black/5 py-2 px-4 text-sm font-medium text-black">
             Our Features
           </Badge>
           <TrueFocus 
             sentence="A Smarter Way to Learn"
             manualMode={false}
             blurAmount={10}
-            borderColor="#40ffaa"
+            borderColor="#000000"
             animationDuration={.5}
             pauseBetweenAnimations={.15}
           />

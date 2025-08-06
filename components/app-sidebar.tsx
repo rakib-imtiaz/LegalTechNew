@@ -1,126 +1,110 @@
 "use client"
 
 import * as React from "react"
-import { 
-  FileText, 
-  PenTool, 
-  Search, 
-  MessageCircle, 
-  FolderOpen, 
-  Users, 
-  Settings, 
-  Scale,
-  Home,
-  Calendar,
-  Bell
-} from "lucide-react"
-import Image from "next/image"
-
-import {
-  Sidebar,
-  SidebarBody,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarHeading,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarSeparator,
-} from "@/components/ui/sidebar"
+import Link from "next/link"
+import { Menu, LogOut, Settings, BrainCircuit } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const mainNav = [
-  { href: "/", icon: Home, label: "Dashboard" },
-  { href: "/case-glancer", icon: FileText, label: "Case Glancer" },
-  { href: "/document-drafter", icon: PenTool, label: "Document Drafter" },
-  { href: "/research", icon: Search, label: "Legal Research" },
-  { href: "/client-intake", icon: MessageCircle, label: "Client Intake" },
-  { href: "/storage", icon: FolderOpen, label: "Case Storage" },
-]
-
-const secondaryNav = [
-  { href: "/clients", icon: Users, label: "Clients" },
-  { href: "/calendar", icon: Calendar, label: "Calendar" },
-  { href: "/notifications", icon: Bell, label: "Notifications" },
-]
-
-export function AppSidebar() {
-  const [activeItem, setActiveItem] = React.useState("/")
+export default function AppSidebar({
+  sidebarCollapsed,
+  setSidebarCollapsed,
+  navigationItems,
+  workspaceItems,
+  isMobile = false,
+}) {
+  const commonClasses = "flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200"
 
   return (
-    <Sidebar className="border-r border-white/10">
-      <SidebarContent>
-        <SidebarHeader>
-          <div className="flex items-center space-x-2.5">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-green-400">
-              <Scale className="h-6 w-6 text-black" />
+    <div
+      className={`
+        fixed h-screen
+        ${isMobile ? 'flex' : 'hidden md:flex'}
+        flex-col bg-[#1C1C1C] text-white z-40 transition-all duration-300
+        ${sidebarCollapsed ? 'w-[60px]' : 'w-[250px]'}
+        ${isMobile ? 'w-full' : ''}
+      `}
+    >
+      {/* Logo */}
+      <div className={`flex items-center p-4 border-b border-white/10 ${sidebarCollapsed ? 'justify-center' : 'justify-between'}`}>
+        {!sidebarCollapsed && (
+          <div className="flex items-center space-x-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-green-400 to-teal-500">
+              <BrainCircuit className="h-5 w-5 text-black" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold">NomosAI</span>
-              <span className="text-xs text-muted-foreground">Legal Platform</span>
+            <div>
+              <div className="text-base font-bold">Learningly</div>
+              <div className="text-xs text-gray-400">AI Learning Platform</div>
             </div>
           </div>
-        </SidebarHeader>
+        )}
+        {!isMobile && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            className="text-gray-400 hover:text-white"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+        )}
+      </div>
 
-        <SidebarBody className="flex flex-col justify-between">
-          <div className="space-y-6">
-            <SidebarMenu>
-              <SidebarHeading>Main Features</SidebarHeading>
-              {mainNav.map((item) => (
-                <SidebarMenuItem key={item.href}>
-                  <Button
-                    variant={activeItem === item.href ? "secondary" : "ghost"}
-                    onClick={() => setActiveItem(item.href)}
-                    className="w-full justify-start space-x-3"
-                    size="sm"
-                  >
-                    <item.icon className="h-4 w-4" />
-                    <span>{item.label}</span>
-                  </Button>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col justify-between p-2">
+        <div>
+          {/* Main Features */}
+          {!sidebarCollapsed && (
+            <div className="text-xs font-semibold text-gray-400 mb-2 px-3 mt-4">FEATURES</div>
+          )}
+          <nav className="space-y-1 mt-2">
+            {navigationItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <div
+                  className={`
+                    ${commonClasses}
+                    ${item.active ? 'bg-green-600/90 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}
+                    ${sidebarCollapsed ? 'justify-center' : ''}
+                  `}
+                >
+                  <item.icon className="h-5 w-5" />
+                  {!sidebarCollapsed && <span>{item.label}</span>}
+                </div>
+              </Link>
+            ))}
+          </nav>
 
-            <SidebarMenu>
-              <SidebarHeading>Workspace</SidebarHeading>
-              {secondaryNav.map((item) => (
-                <SidebarMenuItem key={item.href}>
-                  <Button
-                    variant={activeItem === item.href ? "secondary" : "ghost"}
-                    onClick={() => setActiveItem(item.href)}
-                    className="w-full justify-start space-x-3"
-                    size="sm"
-                  >
-                    <item.icon className="h-4 w-4" />
-                    <span>{item.label}</span>
-                  </Button>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </div>
-
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <Button variant="ghost" className="w-full justify-start space-x-3" size="sm">
-                <Settings className="h-4 w-4" />
-                <span>Settings</span>
-              </Button>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarBody>
-      </SidebarContent>
-
-      <SidebarFooter>
-        <div className="flex items-center space-x-3 p-3 rounded-lg bg-secondary/50 border border-white/10">
-          <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-green-400 flex items-center justify-center">
-            <span className="text-sm font-bold text-black">LA</span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium truncate">Legal Assistant</p>
-            <p className="text-xs text-muted-foreground truncate">Pro License</p>
-          </div>
+          {/* Workspace */}
+          {!sidebarCollapsed && (
+            <div className="text-xs font-semibold text-gray-400 mb-2 px-3 mt-6">WORKSPACE</div>
+          )}
+          <nav className="space-y-1 mt-2">
+            {workspaceItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <div className={`${commonClasses} text-gray-300 hover:bg-white/10 hover:text-white ${sidebarCollapsed ? 'justify-center' : ''}`}>
+                  <item.icon className="h-5 w-5" />
+                  {!sidebarCollapsed && <span>{item.label}</span>}
+                </div>
+              </Link>
+            ))}
+          </nav>
         </div>
-      </SidebarFooter>
-    </Sidebar>
+
+        {/* Settings & Logout */}
+        <div className="p-2 border-t border-white/10">
+          <Link href="/settings">
+            <div className={`${commonClasses} text-gray-300 hover:bg-white/10 hover:text-white ${sidebarCollapsed ? 'justify-center' : ''}`}>
+              <Settings className="h-5 w-5" />
+              {!sidebarCollapsed && <span>Settings</span>}
+            </div>
+          </Link>
+          <Link href="/">
+            <div className={`${commonClasses} text-gray-300 hover:bg-white/10 hover:text-white ${sidebarCollapsed ? 'justify-center' : ''}`}>
+              <LogOut className="h-5 w-5" />
+              {!sidebarCollapsed && <span>Logout</span>}
+            </div>
+          </Link>
+        </div>
+      </div>
+    </div>
   )
-} 
+}

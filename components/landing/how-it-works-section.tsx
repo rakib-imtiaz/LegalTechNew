@@ -21,32 +21,32 @@ const steps = [
     title: "Upload Your Content",
     description: "Start by uploading your learning materials—PDFs, DOCX, PPTX, YouTube links, or just paste in text.",
     details: ["Support for 50+ file formats", "YouTube video transcription", "Drag & drop interface"],
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
   {
     icon: Wand2,
     title: "AI Processes & Generates",
     description: "Our AI analyzes your content, understands the context, and generates personalized study materials in seconds.",
     details: ["Advanced NLP processing", "Context-aware generation", "Multiple difficulty levels"],
-    color: "text-purple-500",
-    bg: "bg-purple-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
   {
     icon: BookOpen,
     title: "Study & Practice",
     description: "Engage with interactive quizzes, smart flashcards, and concise summaries tailored to your learning style.",
     details: ["Adaptive learning paths", "Spaced repetition for memory", "Interactive sessions"],
-    color: "text-emerald-500",
-    bg: "bg-emerald-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
   {
     icon: TrendingUp,
     title: "Track & Master",
     description: "Monitor your progress with detailed analytics, identify areas for improvement, and master your subjects.",
     details: ["Performance dashboards", "Weakness identification", "Personalized insights"],
-    color: "text-red-500",
-    bg: "bg-red-500/10",
+    color: "text-black",
+    bg: "bg-black/5",
   },
 ];
 
@@ -68,7 +68,7 @@ const Step = ({ step, index, total }: { step: typeof steps[0], index: number, to
         {index < total - 1 && (
           <div className="absolute top-16 h-full w-1 bg-muted/30">
             <motion.div
-              className="h-full w-full origin-top bg-primary"
+              className="h-full w-full origin-top bg-gradient-to-b from-black to-transparent"
               initial={{ scaleY: 0 }}
               animate={inView ? { scaleY: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -79,7 +79,7 @@ const Step = ({ step, index, total }: { step: typeof steps[0], index: number, to
 
       <SlideIn direction={index % 2 === 0 ? 'left' : 'right'} delay={0.3} className="w-full pb-16">
         <div className="rounded-2xl bg-muted/30 p-6">
-          <Badge variant="outline" className="mb-3 border-primary/30 bg-primary/10 text-sm font-medium text-primary">
+          <Badge variant="outline" className="mb-3 border-black/20 bg-black/5 text-sm font-medium text-black">
             Step {index + 1}
           </Badge>
           <h3 className="mb-2 font-heading text-2xl font-semibold text-foreground">{step.title}</h3>
@@ -87,7 +87,7 @@ const Step = ({ step, index, total }: { step: typeof steps[0], index: number, to
           <ul className="space-y-2">
             {step.details.map(detail => (
               <li key={detail} className="flex items-center text-sm text-muted-foreground">
-                <Check className="mr-2 h-4 w-4 text-emerald-500" />
+                <Check className="mr-2 h-4 w-4 text-black" />
                 <span>{detail}</span>
               </li>
             ))}
@@ -104,11 +104,11 @@ export const HowItWorksSection: React.FC = () => {
       <div className="container mx-auto px-4">
         
         <SlideIn direction="down" className="text-center">
-          <Badge variant="outline" className="mb-4 border-primary/30 bg-primary/10 py-2 px-4 text-sm font-medium text-primary">
+          <Badge variant="outline" className="mb-4 border-black/20 bg-black/5 py-2 px-4 text-sm font-medium text-black">
             How It Works
           </Badge>
           <GradientText
-            colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+            colors={["#000000", "#4d4d4d", "#000000", "#4d4d4d", "#000000"]}
             animationSpeed={4}
             showBorder={false}
             className="font-heading text-4xl font-bold tracking-tighter md:text-5xl"

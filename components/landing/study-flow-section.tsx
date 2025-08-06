@@ -92,14 +92,14 @@ const QuizComponent = ({
             disabled={selected !== null}
             className={cn(
               "flex w-full items-center gap-3 rounded-lg border-2 p-4 text-left transition-all",
-              selected === null && "hover:border-primary/50 hover:bg-primary/5",
-              selected !== null && index === data[current].correct && "border-emerald-500/50 bg-emerald-500/10 text-emerald-700",
-              selected !== null && selected === index && index !== data[current].correct && "border-red-500/50 bg-red-500/10 text-red-700",
+              selected === null && "hover:border-primary/50 hover:bg-black/5",
+              selected !== null && index === data[current].correct && "border-black/50 bg-black/5 text-black",
+              selected !== null && selected === index && index !== data[current].correct && "border-black/50 bg-black/5 text-black",
               selected !== null && selected !== index && "opacity-50"
             )}
             whileTap={{ scale: selected === null ? 0.98 : 1 }}
           >
-            <div className={cn("flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2", selected !== null && index === data[current].correct && "border-emerald-500/50 bg-emerald-500 text-white", selected !== null && selected === index && index !== data[current].correct && "border-red-500/50 bg-red-500 text-white")}>
+            <div className={cn("flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2", selected !== null && index === data[current].correct && "border-black/50 bg-black text-white", selected !== null && selected === index && index !== data[current].correct && "border-black/50 bg-black text-white")}>
               {selected !== null && index === data[current].correct && <Check size={14} />}
               {selected !== null && selected === index && index !== data[current].correct && <X size={14} />}
             </div>
@@ -115,9 +115,9 @@ const QuizComponent = ({
             exit={{ opacity: 0, y: -10 }}
             className="mt-6"
           >
-            <div className="rounded-lg bg-primary/5 p-4">
+            <div className="rounded-lg bg-black/5 p-4">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black/5 text-black">
                   <Info size={18} />
                 </div>
                 <div>

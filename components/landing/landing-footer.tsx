@@ -45,8 +45,8 @@ export const LandingFooter: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 py-16 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <div className="flex items-center gap-2">
-                <div className="rounded-md bg-primary p-2">
-                  <BookOpen className="h-6 w-6 text-primary-foreground" />
+                <div className="rounded-md bg-black p-2">
+                  <BookOpen className="h-6 w-6 text-white" />
                 </div>
                 <span className="font-heading text-xl font-bold text-foreground">Learningly AI</span>
               </div>
@@ -62,7 +62,7 @@ export const LandingFooter: React.FC = () => {
                   <ul className="mt-4 space-y-2">
                     {navigation[key].map(item => (
                       <li key={item.name}>
-                        <Link href={item.href} className="text-muted-foreground hover:text-primary">
+                        <Link href={item.href} className="text-muted-foreground hover:text-black">
                           {item.name}
                         </Link>
                       </li>
@@ -79,7 +79,7 @@ export const LandingFooter: React.FC = () => {
               </p>
               <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <Input type="email" placeholder="Enter your email" className="flex-1 bg-background" />
-                <Button>Subscribe</Button>
+                <Button className="bg-black text-white hover:bg-gray-800">Subscribe</Button>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@ export const LandingFooter: React.FC = () => {
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map(link => (
-                <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-primary">
+                <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-black">
                   <link.icon className="h-5 w-5" />
                   <span className="sr-only">{link.name}</span>
                 </Link>

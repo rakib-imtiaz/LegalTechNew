@@ -52,8 +52,8 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ name, role, text, avatar }: typeof testimonials[0]) => (
-  <div className="relative h-full w-64 flex-shrink-0 overflow-hidden rounded-2xl border-2 border-transparent bg-muted/50 p-6 shadow-sm">
-    <Quote className="absolute top-4 right-4 h-12 w-12 text-muted-foreground/10" />
+  <div className="relative h-full w-80 flex-shrink-0 overflow-hidden rounded-2xl border bg-background p-6 shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+    <Quote className="absolute top-6 right-6 h-16 w-16 text-muted-foreground/5" />
     <div className="flex items-center gap-3">
       <Avatar className="h-10 w-10">
         <AvatarImage src={avatar} alt={name} />
@@ -75,7 +75,7 @@ const TestimonialCard = ({ name, role, text, avatar }: typeof testimonials[0]) =
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <section className="w-full overflow-hidden bg-background py-24">
+    <section className="w-full overflow-hidden bg-muted py-24">
       <div className="container mx-auto px-4">
         
         <SlideIn direction="down" className="text-center">
@@ -107,8 +107,8 @@ export const TestimonialsSection: React.FC = () => {
             <TestimonialCard key={testimonial.name} {...testimonial} />
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-muted"></div>
+<div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-muted"></div>
       </div>
     </section>
   );
