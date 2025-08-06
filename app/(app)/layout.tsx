@@ -9,6 +9,7 @@ import {
   Lightbulb,
   ScanSearch,
   GraduationCap,
+  Calculator,
   User,
   Calendar,
   Settings,
@@ -29,6 +30,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     { icon: Lightbulb, label: "Solver", href: "/solver", active: pathname === '/solver' },
     { icon: ScanSearch, label: "Search", href: "/search", active: pathname === '/search' },
     { icon: GraduationCap, label: "Exam Prep", href: "/exam-prep", active: pathname === '/exam-prep' },
+    { icon: Calculator, label: "Math Visualization", href: "/math-viz", active: pathname === '/math-viz' },
   ]
 
   const workspaceItems = [
