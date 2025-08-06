@@ -41,25 +41,6 @@
 **Image name:** study-flow-flashcard-demo
 **Image prompt:** Digital flashcard interface showing card flip animation and clean typography. Professional design with smooth transitions and clear content hierarchy.
 
-## Testimonials Section
-**Image location:** Avatar images for each testimonial
-**Image name:** testimonial-avatar-sarah
-**Image prompt:** Professional headshot of a young medical student (Sarah Chen) with a confident, friendly expression. Clean background, professional attire, warm lighting.
-
-**Image name:** testimonial-avatar-marcus
-**Image prompt:** Professional headshot of a CS professor (Marcus Johnson) with glasses, intelligent expression. Clean background, professional attire, academic setting.
-
-**Image name:** testimonial-avatar-emma
-**Image prompt:** Professional headshot of a high school student (Emma Rodriguez) with bright, enthusiastic expression. Clean background, casual professional attire.
-
-**Image name:** testimonial-avatar-james
-**Image prompt:** Professional headshot of a corporate trainer (Dr. James Park) with confident, authoritative expression. Clean background, business attire, professional setting.
-
-**Image name:** testimonial-avatar-lisa
-**Image prompt:** Professional headshot of a law student (Lisa Thompson) with determined, focused expression. Clean background, professional attire, academic setting.
-
-**Image name:** testimonial-avatar-ahmed
-**Image prompt:** Professional headshot of a language learner (Ahmed Hassan) with friendly, approachable expression. Clean background, casual professional attire.
 
 ## Pricing Section
 **Image location:** Background or decorative elements for pricing cards
@@ -77,10 +58,6 @@
 **Image name:** cta-learning-revolution
 **Image prompt:** Inspirational illustration showing transformation from traditional learning to AI-powered education. Clean, modern design with subtle motivational elements.
 
-## Footer Section
-**Image location:** Logo or brand illustration
-**Image name:** footer-logo
-**Image prompt:** Clean, modern logo for Learningly AI. Minimalist design with typography and subtle icon elements. Professional color scheme.
 
 ## General Image Guidelines:
 - **Style:** Clean, modern, minimalist

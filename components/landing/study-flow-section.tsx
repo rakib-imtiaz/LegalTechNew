@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,7 @@ const demos = {
   quiz: {
     title: 'Interactive Quiz',
     icon: BookOpen,
+    image: "/images/landing/study-flow/study-flow-quiz-demo.png",
     data: [
       {
         question: "What is the primary function of machine learning algorithms?",
@@ -50,6 +52,7 @@ const demos = {
   flashcards: {
     title: 'Smart Flashcards',
     icon: Copy,
+    image: "/images/landing/study-flow/study-flow-flashcard-demo.png",
     data: [
       {
         front: "What is Artificial Intelligence?",
@@ -233,6 +236,15 @@ export const StudyFlowSection: React.FC = () => {
         </div>
 
         <div className="mx-auto mt-10 max-w-3xl">
+          <div className="relative h-96 w-full mb-4">
+            <Image
+              src={demos[activeDemo].image}
+              alt={demos[activeDemo].title}
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
           <div className="mb-4 rounded-2xl border-2 border-transparent bg-muted/50 p-4">
             <div className="flex items-center justify-between text-sm">
               <p className="font-medium text-muted-foreground">

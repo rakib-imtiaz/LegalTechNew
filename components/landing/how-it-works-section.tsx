@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Badge } from '@/components/ui/badge';
@@ -23,6 +24,7 @@ const steps = [
     details: ["Support for 50+ file formats", "YouTube video transcription", "Drag & drop interface"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/how-it-works/how-it-works-upload.png"
   },
   {
     icon: Wand2,
@@ -31,6 +33,7 @@ const steps = [
     details: ["Advanced NLP processing", "Context-aware generation", "Multiple difficulty levels"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/how-it-works/how-it-works-ai-processing.png"
   },
   {
     icon: BookOpen,
@@ -39,6 +42,7 @@ const steps = [
     details: ["Adaptive learning paths", "Spaced repetition for memory", "Interactive sessions"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/how-it-works/how-it-works-study-practice.png"
   },
   {
     icon: TrendingUp,
@@ -47,6 +51,7 @@ const steps = [
     details: ["Performance dashboards", "Weakness identification", "Personalized insights"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/how-it-works/how-it-works-track-master.png"
   },
 ];
 
@@ -79,6 +84,15 @@ const Step = ({ step, index, total }: { step: typeof steps[0], index: number, to
 
       <SlideIn direction={index % 2 === 0 ? 'left' : 'right'} delay={0.3} className="w-full pb-16">
         <div className="rounded-2xl bg-muted/30 p-6">
+          <div className="relative h-48 w-full mb-4">
+            <Image
+              src={step.image}
+              alt={step.title}
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
           <Badge variant="outline" className="mb-3 border-black/20 bg-black/5 text-sm font-medium text-black">
             Step {index + 1}
           </Badge>

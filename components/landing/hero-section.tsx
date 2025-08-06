@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { LightRays, FadeContent, SlideIn, Typewriter } from '@/components/react-bits';
 import { Button } from '@/components/ui/button';
 import { Rocket, Info, BookOpen, Brain, Zap, ExternalLink } from 'lucide-react';
@@ -11,6 +12,16 @@ import { Badge } from '@/components/ui/badge';
 export const HeroSection: React.FC = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-background/70 backdrop-blur-sm"></div>
+      <div className="absolute inset-0">
+        <Image
+          src="/images/landing/hero/hero-ai-learning-platform.png"
+          alt="AI Learning Platform"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-20"
+        />
+      </div>
       <div className="absolute inset-0">
         <LightRays
           raysOrigin="top-center"

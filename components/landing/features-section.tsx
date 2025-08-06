@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -26,6 +27,7 @@ const features = [
     details: ["Outline format", "ELI5 explanations", "Key points extraction", "Citation support"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/features/features-smart-summaries.png"
   },
   {
     icon: HelpCircle,
@@ -34,6 +36,7 @@ const features = [
     details: ["10-50 questions", "Difficulty levels", "Multiple formats", "Smart adaptation"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/features/features-interactive-quizzes.png"
   },
   {
     icon: CreditCard,
@@ -42,6 +45,7 @@ const features = [
     details: ["Auto-generation", "Cloze deletion", "SRS algorithm", "Progress tracking"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/features/features-ai-flashcards.png"
   },
   {
     icon: MessageCircle,
@@ -50,6 +54,7 @@ const features = [
     details: ["Contextual answers", "Source citations", "Follow-up prompts", "24/7 availability"],
     color: "text-black",
     bg: "bg-black/5",
+    image: "/images/landing/features/features-ai-chat.png"
   }
 ];
 
@@ -60,9 +65,19 @@ const FeatureCard = ({
   details,
   color,
   bg,
+  image,
   isBack = false
 }: (typeof features)[0] & { isBack?: boolean }) => (
   <Card className={cn("flex h-full w-full flex-col justify-between rounded-2xl border-2 p-6 transition-all", isBack ? "border-black/50 bg-black/5" : "border-transparent bg-black/5")}>
+    <div className="relative h-40 w-full mb-4">
+      <Image
+        src={image}
+        alt={title}
+        layout="fill"
+        objectFit="contain"
+        className="rounded-lg"
+      />
+    </div>
     <div>
       <div className={cn("mb-4 flex h-12 w-12 items-center justify-center rounded-lg", bg)}>
         <Icon className={cn("h-6 w-6", color)} />

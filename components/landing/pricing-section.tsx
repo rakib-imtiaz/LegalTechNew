@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -29,7 +30,8 @@ const plans = [
       "Basic features only"
     ],
     isPopular: false,
-    gradient: "from-gray-500 to-gray-600"
+    gradient: "from-gray-500 to-gray-600",
+    image: "/images/landing/pricing/pricing-free-plan.png"
   },
   {
     name: "Premium",
@@ -48,7 +50,8 @@ const plans = [
     ],
     limitations: [],
     isPopular: true,
-    gradient: "from-blue-500 to-purple-600"
+    gradient: "from-blue-500 to-purple-600",
+    image: "/images/landing/pricing/pricing-premium-plan.png"
   },
   {
     name: "Admin",
@@ -68,7 +71,8 @@ const plans = [
     ],
     limitations: [],
     isPopular: false,
-    gradient: "from-emerald-500 to-green-600"
+    gradient: "from-emerald-500 to-green-600",
+    image: "/images/landing/pricing/pricing-admin-plan.png"
   }
 ];
 
@@ -148,10 +152,19 @@ export const PricingSection: React.FC = () => {
 
                 {/* Plan Header */}
                 <div className="text-center sm:text-left">
+                  <div className="relative h-40 w-full mb-4">
+                    <Image
+                      src={plan.image}
+                      alt={plan.name}
+                      layout="fill"
+                      objectFit="contain"
+                      className="rounded-lg"
+                    />
+                  </div>
                   <div className="flex items-center justify-between">
                     <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">{plan.name}</h3>
                     {plan.name === 'Admin' && <Crown className="h-6 w-6 text-black" />}
-{plan.name === 'Premium' && <Zap className="h-6 w-6 text-blue-500" />}
+                    {plan.name === 'Premium' && <Zap className="h-6 w-6 text-blue-500" />}
                   </div>
                   <p className="mt-2 text-sm sm:text-base text-muted-foreground">{plan.description}</p>
                   

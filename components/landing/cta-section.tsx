@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowRight, Check } from 'lucide-react';
@@ -19,6 +20,15 @@ export const CTASection: React.FC = () => {
               "[mask-image:radial-gradient(400px_at_center,white,transparent)]",
             )}
           />
+          <div className="relative h-64 w-full mb-8">
+            <Image
+              src="/images/landing/cta/cta-learning-revolution.png"
+              alt="Learning Revolution"
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
           <SlideIn direction="down" className="text-center">
             <GradientText
               colors={["#000000", "#4d4d4d", "#000000", "#4d4d4d", "#000000"]}
